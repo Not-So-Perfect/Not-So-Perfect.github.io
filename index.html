@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- FILE: index.html | VERSION: 1.1 | CHANGE: intro text, project thumbnails (thumbs folder, meta override, themed placeholder), taped-photo card style -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NotSoPerfect.EXE | Projects</title>
+<meta name="description" content="Electronics builds and tools, posted as I go. Browse every project and open the exact repo.">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:title" content="NotSoPerfect.EXE | Projects">
+<meta property="og:description" content="Electronics builds and tools, posted as I go.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0A0A'/%3E%3Ctext x='50' y='70' font-size='60' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%236BCB4A'%3E.E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0A;--ink:#F3EDE0;--g:#6BCB4A;--mute:#9a958a;--line:#34332f;--wob:255px 14px 225px 14px/14px 225px 14px 255px;--marker:'Permanent Marker','Comic Sans MS',cursive}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 Karla,system-ui,sans-serif;padding:max(24px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(32px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left))}
+.wrap{max-width:900px;margin:0 auto}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--g);color:#0A0A0A;padding:8px 12px;z-index:9}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--g);outline-offset:3px}
+header{padding:40px 0 30px}
+.mark{margin:0;font:400 clamp(52px,13vw,96px)/.95 var(--marker);letter-spacing:.01em;transform:rotate(-1.5deg);transform-origin:left}
+.mark span{display:block}
+.mark i{font-style:normal;display:inline-block;color:var(--g);transform:translateY(.1em) rotate(3deg)}
+.mark b{font-weight:400;color:var(--g);display:inline-block;margin-top:.05em;border-bottom:.07em solid var(--g)}
+.tag{margin:26px 0 0;font-size:19px;max-width:50ch}
+.bar{display:flex;gap:10px;margin:8px 0 14px}
+input,select{font:inherit;color:var(--ink);background:transparent;border:1.5px solid var(--ink);border-radius:var(--wob);padding:11px 16px;min-height:46px}
+input{flex:1;min-width:0}
+input::placeholder{color:var(--mute)}
+select{cursor:pointer}select option{background:#0A0A0A}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.chip{font:inherit;font-size:15px;color:var(--ink);background:transparent;border:1.5px solid var(--line);border-radius:var(--wob);padding:5px 14px;cursor:pointer}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed=true]{background:var(--g);border-color:var(--g);color:#0A0A0A;font-weight:700}
+.count{color:var(--mute);font-size:15px;margin:14px 0 22px}
+.grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px 22px}
+.card{position:relative;border:1.5px solid var(--line);border-radius:var(--wob);padding:16px;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,transform .15s}
+.card:nth-child(odd){transform:rotate(-.35deg)}.card:nth-child(even){transform:rotate(.35deg)}
+.card:hover{border-color:var(--g);transform:none}
+.card::before{content:"";position:absolute;top:-9px;left:30px;width:64px;height:20px;background:var(--g);opacity:.9;transform:rotate(-4deg);z-index:2;pointer-events:none}
+.card:nth-child(even)::before{left:auto;right:30px;transform:rotate(4deg)}
+.thumb{border:1.5px solid var(--ink);border-radius:var(--wob);overflow:hidden;background:#141412}
+.thumb img,.thumb svg{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.phtxt{font:400 84px var(--marker);fill:var(--ink)}
+.card h2{margin:6px 0 0;font:400 24px/1.15 var(--marker);overflow-wrap:anywhere}
+.badge{align-self:flex-start;background:var(--ink);color:#0A0A0A;font-weight:700;font-size:14px;padding:1px 10px;border-radius:var(--wob)}
+.card p{margin:0;color:#d4cfc3}
+.meta{color:var(--mute);font-size:14px;margin-top:auto}
+.topics{color:var(--g);font-size:14px}
+.acts{display:flex;gap:16px;flex-wrap:wrap;padding-top:4px}
+.acts a{font-weight:700;text-decoration:none;border-bottom:2px solid var(--g);padding-bottom:1px}
+.acts a:hover{background:var(--g);color:#0A0A0A}
+.msg{border:1.5px dashed var(--line);border-radius:var(--wob);padding:28px;text-align:center;color:var(--mute);grid-column:1/-1}
+.msg a{color:var(--g)}
+.msg button{font:inherit;color:var(--ink);background:none;border:0;text-decoration:underline;cursor:pointer;padding:0}
+footer{margin-top:60px;padding-top:20px;border-top:1.5px dashed var(--line);color:var(--mute);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+footer a{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.card,.mark{transition:none}}
+@media (max-width:480px){.bar{flex-direction:column}}
+</style>
+</head>
+<body>
+<a class="skip" href="#list">Skip to projects</a>
+<div class="wrap">
+<header>
+<h1 class="mark" aria-label="NotSoPerfect.EXE"><span>NotSo</span><span>Pe<i>rf</i>ect</span><b>.EXE</b></h1>
+<p class="tag" id="intro"></p>
+</header>
+<main>
+<div class="bar">
+<label class="sr" for="q">Search projects</label>
+<input id="q" type="search" placeholder="Search projects (press / to focus)" autocomplete="off" spellcheck="false">
+<label class="sr" for="sort">Sort projects</label>
+<select id="sort"><option value="recent">Recently updated</option><option value="name">Name</option><option value="stars">Most stars</option></select>
+</div>
+<div id="chips" class="chips" role="group" aria-label="Filter by topic"></div>
+<p id="count" class="count" role="status" aria-live="polite"></p>
+<ul id="list" class="grid"></ul>
+</main>
+<footer>
+<span>Not perfect, but it runs.</span>
+<span><a id="ghLink" href="#" rel="noopener">GitHub</a> &nbsp; <a id="igLink" href="#" rel="noopener">Instagram</a></span>
+</footer>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  var CONFIG = {
+    githubUser: "Not-So-Perfect",
+    instagramUrl: "https://instagram.com/notsoperfect.exe",
+    intro: "I build electronics and post them while I build, not after they feel finished. Every project here has its code. Pick one and open the repo.",
+    siteRepo: "Not-So-Perfect.github.io",
+    hideForks: true,
+    exclude: [],
+    cacheMinutes: 10,
+    thumbExts: ["jpg", "png", "webp"],
+    meta: {
+      /* "repo-name": { title: "Servo and ESC tester", tag: "Tool #1", reel: "https://instagram.com/reel/XXXXXXXX", thumb: "thumbs/custom-name.jpg" } */
+    }
+  };
+
+  var $ = function (s) { return document.querySelector(s); };
+  var state = { repos: [], q: "", topic: "", sort: "recent" };
+  var CK = "nsp:repos:v2:" + CONFIG.githubUser;
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function safeUrl(u) { return /^https?:\/\//i.test(u || "") ? u : ""; }
+  function safePath(u) { return /^[\w\-./%]+$/.test(u || "") && u.indexOf("..") === -1 ? u : ""; }
+  function pretty(n) { return n.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim(); }
+  function fmtDate(iso) {
+    try { return new Intl.DateTimeFormat(undefined, { month: "short", year: "numeric" }).format(new Date(iso)); }
+    catch (e) { return ""; }
+  }
+
+  function initials(t) {
+    var w = t.split(/\s+/).filter(Boolean);
+    var s = (w.length > 1 ? w[0].charAt(0) + w[1].charAt(0) : t.slice(0, 2)).toUpperCase();
+    return s.slice(0, 2);
+  }
+  function placeholder(title) {
+    var s = initials(title);
+    return '<svg viewBox="0 0 320 180" role="img" aria-label="' + esc(title) + '"><rect width="320" height="180" fill="#141412"/>' +
+      '<text x="160" y="108" text-anchor="middle" class="phtxt">' + esc(s.charAt(0)) +
+      '<tspan dy="10" fill="#6BCB4A">' + esc(s.charAt(1)) + '</tspan></text>' +
+      '<path d="M98 138 Q160 129 224 134" fill="none" stroke="#6BCB4A" stroke-width="4" stroke-linecap="round"/></svg>';
+  }
+
+  function readCache(ignoreAge) {
+    try {
+      var c = JSON.parse(localStorage.getItem(CK) || "null");
+      if (c && (ignoreAge || Date.now() - c.t < CONFIG.cacheMinutes * 60000)) return c.d;
+    } catch (e) {}
+    return null;
+  }
+  function writeCache(d) {
+    try { localStorage.setItem(CK, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
+  }
+
+  async function fetchRepos() {
+    var fresh = readCache(false);
+    if (fresh) return fresh;
+    var all = [];
+    try {
+      for (var p = 1; p <= 3; p++) {
+        var r = await fetch("https://api.github.com/users/" + encodeURIComponent(CONFIG.githubUser) +
+          "/repos?per_page=100&sort=pushed&page=" + p, { headers: { Accept: "application/vnd.github+json" } });
+        if (!r.ok) {
+          throw new Error(r.status === 404 ? "GitHub user not found. Check githubUser in the config."
+            : r.status === 403 ? "GitHub rate limit reached. Try again in a few minutes."
+            : "GitHub returned error " + r.status + ".");
+        }
+        var page = await r.json();
+        all = all.concat(page);
+        if (page.length < 100) break;
+      }
+    } catch (err) {
+      var stale = readCache(true);
+      if (stale) return stale;
+      throw err;
+    }
+    var data = all
+      .filter(function (x) {
+        return !(CONFIG.hideForks && x.fork) && CONFIG.exclude.indexOf(x.name) === -1 &&
+          x.name.toLowerCase() !== CONFIG.siteRepo.toLowerCase();
+      })
+      .map(function (x) {
+        var m = CONFIG.meta[x.name] || {};
+        var title = m.title || pretty(x.name);
+        var topics = x.topics || [];
+        return {
+          name: x.name, title: title, tag: m.tag || "", reel: safeUrl(m.reel), thumb: safePath(m.thumb),
+          desc: x.description || "", url: x.html_url, lang: x.language || "",
+          stars: x.stargazers_count || 0, pushed: x.pushed_at, topics: topics,
+          hay: [x.name, pretty(x.name), title, m.tag || "", x.description || "", topics.join(" ")].join(" ").toLowerCase()
+        };
+      });
+    writeCache(data);
+    return data;
+  }
+
+  function sorted(rows) {
+    var s = state.sort;
+    return rows.slice().sort(function (a, b) {
+      if (s === "name") return a.title.localeCompare(b.title);
+      if (s === "stars") return b.stars - a.stars || (a.pushed < b.pushed ? 1 : -1);
+      return a.pushed < b.pushed ? 1 : -1;
+    });
+  }
+
+  function renderChips() {
+    var counts = {};
+    state.repos.forEach(function (r) { r.topics.forEach(function (t) { counts[t] = (counts[t] || 0) + 1; }); });
+    var tops = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b); }).slice(0, 12);
+    var box = $("#chips");
+    if (!tops.length) { box.innerHTML = ""; return; }
+    box.innerHTML = ["all"].concat(tops).map(function (t) {
+      var on = (t === "all" && !state.topic) || t === state.topic;
+      return '<button type="button" class="chip" data-t="' + esc(t === "all" ? "" : t) + '" aria-pressed="' + on + '">' + esc(t) + "</button>";
+    }).join("");
+  }
+
+  function card(r) {
+    var src = r.thumb || "thumbs/" + encodeURIComponent(r.name) + "." + CONFIG.thumbExts[0];
+    var thumb = '<div class="thumb" data-title="' + esc(r.title) + '" data-name="' + esc(r.name) + '" data-i="0" data-custom="' + (r.thumb ? "1" : "") + '">' +
+      '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async"></div>';
+    var acts = '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">Open repo<span class="sr"> ' + esc(r.title) + "</span></a>";
+    if (r.reel) acts += '<a href="' + esc(r.reel) + '" target="_blank" rel="noopener">Watch reel<span class="sr"> for ' + esc(r.title) + "</span></a>";
+    var bits = [r.lang, r.stars ? r.stars + (r.stars === 1 ? " star" : " stars") : "", r.pushed ? "updated " + fmtDate(r.pushed) : ""].filter(Boolean).join(", ");
+    return '<li class="card">' + thumb +
+      (r.tag ? '<span class="badge">' + esc(r.tag) + "</span>" : "") +
+      "<h2>" + esc(r.title) + "</h2>" +
+      (r.desc ? "<p>" + esc(r.desc) + "</p>" : "") +
+      (r.topics.length ? '<div class="topics">' + r.topics.map(function (t) { return "#" + esc(t); }).join(" ") + "</div>" : "") +
+      '<div class="meta">' + esc(bits) + "</div>" +
+      '<div class="acts">' + acts + "</div></li>";
+  }
+
+  function onThumbError(e) {
+    var img = e.target;
+    if (!img || img.tagName !== "IMG") return;
+    var box = img.closest(".thumb");
+    if (!box) return;
+    var i = parseInt(box.getAttribute("data-i"), 10) + 1;
+    if (!box.getAttribute("data-custom") && i < CONFIG.thumbExts.length) {
+      box.setAttribute("data-i", i);
+      img.src = "thumbs/" + encodeURIComponent(box.getAttribute("data-name")) + "." + CONFIG.thumbExts[i];
+    } else {
+      box.innerHTML = placeholder(box.getAttribute("data-title") || "");
+    }
+  }
+
+  function render() {
+    var q = state.q.trim().toLowerCase();
+    var rows = sorted(state.repos.filter(function (r) {
+      return (!state.topic || r.topics.indexOf(state.topic) !== -1) && (!q || r.hay.indexOf(q) !== -1);
+    }));
+    $("#count").textContent = rows.length + (rows.length === 1 ? " project" : " projects");
+    $("#list").innerHTML = rows.length ? rows.map(card).join("") :
+      '<li class="msg">No project matches that. <button type="button" id="clear">Clear search</button></li>';
+    renderChips();
+    syncUrl();
+  }
+
+  function syncUrl() {
+    try {
+      var u = new URL(location.href);
+      state.q ? u.searchParams.set("q", state.q) : u.searchParams.delete("q");
+      state.topic ? u.searchParams.set("topic", state.topic) : u.searchParams.delete("topic");
+      history.replaceState(null, "", u);
+    } catch (e) {}
+  }
+
+  function showError(msg) {
+    $("#count").textContent = "";
+    $("#list").innerHTML = '<li class="msg">' + esc(msg) + ' <a href="https://github.com/' + encodeURIComponent(CONFIG.githubUser) + '" rel="noopener">Open GitHub directly</a></li>';
+  }
+
+  function bind() {
+    var q = $("#q");
+    q.addEventListener("input", function () { state.q = q.value; render(); });
+    $("#sort").addEventListener("change", function (e) { state.sort = e.target.value; render(); });
+    $("#chips").addEventListener("click", function (e) {
+      var b = e.target.closest(".chip");
+      if (b) { state.topic = b.getAttribute("data-t"); render(); }
+    });
+    $("#list").addEventListener("click", function (e) {
+      if (e.target.id === "clear") { state.q = ""; state.topic = ""; q.value = ""; render(); q.focus(); }
+    });
+    $("#list").addEventListener("error", onThumbError, true);
+    document.addEventListener("keydown", function (e) {
+      var tag = (e.target.tagName || "").toLowerCase();
+      if (e.key === "/" && tag !== "input" && tag !== "select" && tag !== "textarea") { e.preventDefault(); q.focus(); }
+    });
+  }
+
+  async function init() {
+    $("#intro").textContent = CONFIG.intro;
+    $("#ghLink").href = "https://github.com/" + encodeURIComponent(CONFIG.githubUser);
+    $("#igLink").href = safeUrl(CONFIG.instagramUrl) || "#";
+    var params = new URLSearchParams(location.search);
+    state.q = params.get("q") || "";
+    state.topic = params.get("topic") || "";
+    $("#q").value = state.q;
+    bind();
+    $("#count").textContent = "Loading projects…";
+    try {
+      state.repos = await fetchRepos();
+      render();
+    } catch (err) {
+      showError(err && err.message ? err.message : "Couldn’t load projects.");
+    }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
