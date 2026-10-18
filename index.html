@@ -1,93 +1,824 @@
 <!DOCTYPE html>
-<!-- FILE: index.html | VERSION: 1.1 | CHANGE: intro text, project thumbnails (thumbs folder, meta override, themed placeholder), taped-photo card style -->
+<!-- FILE: index.html | VERSION: 2.0 | Welcome Page & Interactive Project Index for NotSoPerfect.EXE -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>NotSoPerfect.EXE | Projects</title>
-<meta name="description" content="Electronics builds and tools, posted as I go. Browse every project and open the exact repo.">
+<title>NotSoPerfect.EXE | Maker & Electronics Lab</title>
+<meta name="description" content="Welcome to NotSoPerfect.EXE. Raw electronics builds, microcontrollers, embedded code, and tools posted as I build.">
 <meta name="theme-color" content="#0A0A0A">
-<meta property="og:title" content="NotSoPerfect.EXE | Projects">
-<meta property="og:description" content="Electronics builds and tools, posted as I go.">
+<meta property="og:title" content="NotSoPerfect.EXE | Maker & Electronics Lab">
+<meta property="og:description" content="Raw electronics builds, microcontrollers, embedded code, and tools posted as I build.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0A0A'/%3E%3Ctext x='50' y='70' font-size='60' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%236BCB4A'%3E.E%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Permanent+Marker&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0A0A;--ink:#F3EDE0;--g:#6BCB4A;--mute:#9a958a;--line:#34332f;--wob:255px 14px 225px 14px/14px 225px 14px 255px;--marker:'Permanent Marker','Comic Sans MS',cursive}
-*{box-sizing:border-box}
-html{color-scheme:dark}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 Karla,system-ui,sans-serif;padding:max(24px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(32px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left))}
-.wrap{max-width:900px;margin:0 auto}
-.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--g);color:#0A0A0A;padding:8px 12px;z-index:9}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--g);outline-offset:3px}
-header{padding:40px 0 30px}
-.mark{margin:0;font:400 clamp(52px,13vw,96px)/.95 var(--marker);letter-spacing:.01em;transform:rotate(-1.5deg);transform-origin:left}
-.mark span{display:block}
-.mark i{font-style:normal;display:inline-block;color:var(--g);transform:translateY(.1em) rotate(3deg)}
-.mark b{font-weight:400;color:var(--g);display:inline-block;margin-top:.05em;border-bottom:.07em solid var(--g)}
-.tag{margin:26px 0 0;font-size:19px;max-width:50ch}
-.bar{display:flex;gap:10px;margin:8px 0 14px}
-input,select{font:inherit;color:var(--ink);background:transparent;border:1.5px solid var(--ink);border-radius:var(--wob);padding:11px 16px;min-height:46px}
-input{flex:1;min-width:0}
-input::placeholder{color:var(--mute)}
-select{cursor:pointer}select option{background:#0A0A0A}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
-.chip{font:inherit;font-size:15px;color:var(--ink);background:transparent;border:1.5px solid var(--line);border-radius:var(--wob);padding:5px 14px;cursor:pointer}
-.chip:hover{border-color:var(--ink)}
-.chip[aria-pressed=true]{background:var(--g);border-color:var(--g);color:#0A0A0A;font-weight:700}
-.count{color:var(--mute);font-size:15px;margin:14px 0 22px}
-.grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px 22px}
-.card{position:relative;border:1.5px solid var(--line);border-radius:var(--wob);padding:16px;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,transform .15s}
-.card:nth-child(odd){transform:rotate(-.35deg)}.card:nth-child(even){transform:rotate(.35deg)}
-.card:hover{border-color:var(--g);transform:none}
-.card::before{content:"";position:absolute;top:-9px;left:30px;width:64px;height:20px;background:var(--g);opacity:.9;transform:rotate(-4deg);z-index:2;pointer-events:none}
-.card:nth-child(even)::before{left:auto;right:30px;transform:rotate(4deg)}
-.thumb{border:1.5px solid var(--ink);border-radius:var(--wob);overflow:hidden;background:#141412}
-.thumb img,.thumb svg{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
-.phtxt{font:400 84px var(--marker);fill:var(--ink)}
-.card h2{margin:6px 0 0;font:400 24px/1.15 var(--marker);overflow-wrap:anywhere}
-.badge{align-self:flex-start;background:var(--ink);color:#0A0A0A;font-weight:700;font-size:14px;padding:1px 10px;border-radius:var(--wob)}
-.card p{margin:0;color:#d4cfc3}
-.meta{color:var(--mute);font-size:14px;margin-top:auto}
-.topics{color:var(--g);font-size:14px}
-.acts{display:flex;gap:16px;flex-wrap:wrap;padding-top:4px}
-.acts a{font-weight:700;text-decoration:none;border-bottom:2px solid var(--g);padding-bottom:1px}
-.acts a:hover{background:var(--g);color:#0A0A0A}
-.msg{border:1.5px dashed var(--line);border-radius:var(--wob);padding:28px;text-align:center;color:var(--mute);grid-column:1/-1}
-.msg a{color:var(--g)}
-.msg button{font:inherit;color:var(--ink);background:none;border:0;text-decoration:underline;cursor:pointer;padding:0}
-footer{margin-top:60px;padding-top:20px;border-top:1.5px dashed var(--line);color:var(--mute);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
-footer a{color:var(--ink)}
-@media (prefers-reduced-motion:reduce){.card,.mark{transition:none}}
-@media (max-width:480px){.bar{flex-direction:column}}
+:root {
+  --bg: #0A0A0A;
+  --surface: #121210;
+  --surface-alt: #181816;
+  --ink: #F3EDE0;
+  --g: #6BCB4A;
+  --g-glow: rgba(107, 203, 74, 0.25);
+  --g-glow-strong: rgba(107, 203, 74, 0.5);
+  --mute: #9a958a;
+  --line: #2e2d29;
+  --line-light: #3e3d38;
+  --wob: 255px 14px 225px 14px/14px 225px 14px 255px;
+  --marker: 'Permanent Marker', 'Comic Sans MS', cursive;
+  --mono: 'JetBrains Mono', monospace;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: dark; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 16px/1.6 'Karla', system-ui, sans-serif;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle circuit background pattern */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(107, 203, 74, 0.08) 0%, transparent 60%),
+    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--g); outline-offset: 3px; }
+
+/* Top Navigation Bar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: rgba(18, 18, 16, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--marker);
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+.nav-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--g);
+  object-fit: cover;
+  background: #141412;
+}
+.nav-brand span { color: var(--ink); }
+.nav-brand b { color: var(--g); font-weight: normal; }
+.nav-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--mute);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--g);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--g);
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.nav-links {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.nav-links a {
+  color: var(--mute);
+  transition: color 0.15s ease;
+}
+.nav-links a:hover {
+  color: var(--g);
+}
+
+/* Hero / Welcome Section */
+.hero {
+  padding: 20px 0 35px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+.brand-header {
+  position: relative;
+}
+.mark {
+  margin: 0;
+  font: 400 clamp(44px, 10vw, 84px)/0.95 var(--marker);
+  letter-spacing: 0.01em;
+  transform: rotate(-1.5deg);
+  transform-origin: left;
+}
+.mark span { display: block; }
+.mark i {
+  font-style: normal;
+  display: inline-block;
+  color: var(--g);
+  transform: translateY(0.08em) rotate(3deg);
+  text-shadow: 0 0 20px var(--g-glow);
+}
+.mark b {
+  font-weight: 400;
+  color: var(--g);
+  display: inline-block;
+  margin-top: 0.05em;
+  border-bottom: 0.07em solid var(--g);
+}
+.tagline {
+  margin: 20px 0 0;
+  font-size: 19px;
+  color: var(--ink);
+  max-width: 58ch;
+  line-height: 1.5;
+}
+.tagline em {
+  color: var(--g);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Interactive Workbench Terminal */
+.bench-card {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.bench-card:hover {
+  border-color: var(--line-light);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.6);
+}
+.bench-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #0d0d0c;
+  border-bottom: 1px solid var(--line);
+}
+.term-dots {
+  display: flex;
+  gap: 6px;
+}
+.term-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #333;
+}
+.term-dot:nth-child(1) { background: #ff5f56; }
+.term-dot:nth-child(2) { background: #ffbd2e; }
+.term-dot:nth-child(3) { background: #27c93f; }
+.bench-tabs {
+  display: flex;
+  gap: 4px;
+}
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--mute);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.tab-btn:hover {
+  color: var(--ink);
+  background: rgba(255,255,255,0.04);
+}
+.tab-btn.active {
+  color: var(--g);
+  background: rgba(107, 203, 74, 0.12);
+  font-weight: 600;
+}
+.bench-content {
+  padding: 22px;
+}
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.2s ease forwards;
+}
+.tab-panel.active {
+  display: block;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* About / Story panel */
+.story-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.story-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
+  border: 2px solid var(--g);
+  object-fit: cover;
+  background: #141412;
+}
+.story-text h3 {
+  margin: 0 0 6px;
+  font-family: var(--marker);
+  font-size: 22px;
+  color: var(--ink);
+}
+.story-text p {
+  margin: 0 0 14px;
+  color: #c9c4b7;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.quick-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+  background: rgba(0,0,0,0.4);
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+.stat-pill span { color: var(--g); font-weight: bold; }
+
+/* Workbench Hardware Chips */
+.hardware-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.hw-item {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.hw-item:hover, .hw-item.active {
+  border-color: var(--g);
+  background: rgba(107, 203, 74, 0.05);
+  transform: translateY(-2px);
+}
+.hw-name {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--g);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hw-desc {
+  font-size: 13px;
+  color: var(--mute);
+  margin-top: 4px;
+}
+
+/* Philosophy Panel */
+.rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.rules-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(0,0,0,0.3);
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font-size: 14px;
+}
+.rule-num {
+  font-family: var(--mono);
+  color: var(--g);
+  font-weight: bold;
+}
+
+/* Action Buttons */
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 10px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--g);
+  color: #0A0A0A;
+  border: 1.5px solid var(--g);
+}
+.btn-primary:hover {
+  background: #7ae056;
+  box-shadow: 0 0 16px var(--g-glow-strong);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line-light);
+}
+.btn-secondary:hover {
+  border-color: var(--ink);
+  background: rgba(255,255,255,0.03);
+}
+
+/* Section Title */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 45px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--line);
+}
+.section-title {
+  margin: 0;
+  font-family: var(--marker);
+  font-size: 28px;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title span { color: var(--g); }
+.section-sub {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--mute);
+}
+
+/* Controls bar */
+.bar {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0 16px;
+}
+input, select {
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 16px;
+  min-height: 44px;
+  transition: border-color 0.15s ease;
+}
+input:focus, select:focus {
+  border-color: var(--g);
+  outline: none;
+  box-shadow: 0 0 10px var(--g-glow);
+}
+input { flex: 1; min-width: 0; }
+input::placeholder { color: var(--mute); }
+select { cursor: pointer; }
+select option { background: #0A0A0A; }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+.chip {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--mute);
+  background: transparent;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.chip:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.chip[aria-pressed=true] {
+  background: var(--g);
+  border-color: var(--g);
+  color: #0A0A0A;
+  font-weight: 700;
+  box-shadow: 0 0 10px var(--g-glow);
+}
+.count {
+  font-family: var(--mono);
+  color: var(--mute);
+  font-size: 13px;
+  margin: 10px 0 24px;
+}
+
+/* Project Cards Grid */
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 28px 22px;
+}
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--wob);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.card:nth-child(odd) { transform: rotate(-0.35deg); }
+.card:nth-child(even) { transform: rotate(0.35deg); }
+.card:hover {
+  border-color: var(--g);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4), 0 0 14px var(--g-glow);
+}
+
+/* Tape effect on cards */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 30px;
+  width: 64px;
+  height: 20px;
+  background: var(--g);
+  opacity: 0.85;
+  transform: rotate(-4deg);
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.card:nth-child(even)::before {
+  left: auto;
+  right: 30px;
+  transform: rotate(4deg);
+}
+
+.thumb {
+  border: 1.5px solid var(--line-light);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #141412;
+  aspect-ratio: 16/9;
+  position: relative;
+}
+.thumb img, .thumb svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.phtxt {
+  font: 400 84px var(--marker);
+  fill: var(--ink);
+}
+
+.card h2 {
+  margin: 6px 0 0;
+  font: 400 22px/1.2 var(--marker);
+  overflow-wrap: anywhere;
+  color: var(--ink);
+}
+.badge {
+  align-self: flex-start;
+  background: var(--ink);
+  color: #0A0A0A;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+.badge-bench {
+  background: rgba(107, 203, 74, 0.2);
+  color: var(--g);
+  border: 1px solid var(--g);
+}
+.card p {
+  margin: 0;
+  color: #c9c4b7;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+.topics {
+  font-family: var(--mono);
+  color: var(--g);
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.meta {
+  font-family: var(--mono);
+  color: var(--mute);
+  font-size: 12px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.acts {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 6px;
+  border-top: 1px dashed var(--line);
+}
+.acts a {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 2px solid var(--g);
+  padding-bottom: 1px;
+  transition: all 0.15s ease;
+}
+.acts a:hover {
+  background: var(--g);
+  color: #0A0A0A;
+}
+
+.msg {
+  border: 1.5px dashed var(--line);
+  border-radius: 12px;
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--mute);
+  grid-column: 1/-1;
+  background: rgba(18, 18, 16, 0.4);
+}
+.msg a { color: var(--g); }
+.msg button {
+  font: inherit;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Footer */
+footer {
+  margin-top: 80px;
+  padding-top: 24px;
+  border-top: 1.5px dashed var(--line);
+  color: var(--mute);
+  font-family: var(--mono);
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+footer a { color: var(--ink); }
+footer a:hover { color: var(--g); }
+
+@media (max-width: 640px) {
+  .story-grid { grid-template-columns: 1fr; }
+  .story-avatar { width: 64px; height: 64px; }
+  .bar { flex-direction: column; }
+  .navbar { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .nav-links { width: 100%; justify-content: space-between; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .mark, .hw-item, .btn { transition: none !important; animation: none !important; }
+}
 </style>
 </head>
 <body>
-<a class="skip" href="#list">Skip to projects</a>
+
 <div class="wrap">
-<header>
-<h1 class="mark" aria-label="NotSoPerfect.EXE"><span>NotSo</span><span>Pe<i>rf</i>ect</span><b>.EXE</b></h1>
-<p class="tag" id="intro"></p>
-</header>
-<main>
-<div class="bar">
-<label class="sr" for="q">Search projects</label>
-<input id="q" type="search" placeholder="Search projects (press / to focus)" autocomplete="off" spellcheck="false">
-<label class="sr" for="sort">Sort projects</label>
-<select id="sort"><option value="recent">Recently updated</option><option value="name">Name</option><option value="stars">Most stars</option></select>
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="nav-brand">
+      <img src="avatar.png" alt="NotSoPerfect Emblem" class="nav-avatar" onerror="this.style.display='none'">
+      <span>NotSo<b>Perfect</b>.EXE</span>
+    </div>
+    <div class="nav-status">
+      <div class="pulse-dot"></div>
+      <span>LAB BENCH: ACTIVE</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#workbench">Workbench</a>
+      <a href="#projects">Projects</a>
+      <a id="igTopLink" href="https://instagram.com/notsoperfect.exe" target="_blank" rel="noopener">Instagram ↗</a>
+      <a id="ghTopLink" href="https://github.com/Not-So-Perfect" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <!-- Hero / Welcome Section -->
+  <section class="hero" id="about">
+    <div class="brand-header">
+      <h1 class="mark" aria-label="NotSoPerfect.EXE">
+        <span>NotSo</span><span>Pe<i>rf</i>ect</span><b>.EXE</b>
+      </h1>
+      <p class="tagline">
+        Electronics builder, microcontroller tinkerer & hardware hacker. 
+        I build raw circuits and post them <em>while I build</em>, not after they look pretty. 
+        Every project has its code, wiring, and a reel.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">⚡ Explore Projects</a>
+        <a id="heroIgBtn" href="https://instagram.com/notsoperfect.exe" target="_blank" rel="noopener" class="btn btn-secondary">📺 Watch on Instagram</a>
+        <a id="heroGhBtn" href="https://github.com/Not-So-Perfect" target="_blank" rel="noopener" class="btn btn-secondary">💻 GitHub Profile</a>
+      </div>
+    </div>
+
+    <!-- Interactive Workbench Card -->
+    <div class="bench-card" id="workbench">
+      <div class="bench-top">
+        <div class="term-dots">
+          <div class="term-dot"></div>
+          <div class="term-dot"></div>
+          <div class="term-dot"></div>
+        </div>
+        <div class="bench-tabs">
+          <button type="button" class="tab-btn active" data-tab="about-tab">👤 About Me</button>
+          <button type="button" class="tab-btn" data-tab="gear-tab">🛠️ Active Gear</button>
+          <button type="button" class="tab-btn" data-tab="rules-tab">⚡ Lab Rules</button>
+        </div>
+      </div>
+
+      <div class="bench-content">
+        <!-- About Me Tab -->
+        <div class="tab-panel active" id="about-tab">
+          <div class="story-grid">
+            <img src="avatar.png" alt="NotSoPerfect Avatar" class="story-avatar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 80 80\'%3E%3Crect width=\'80\' height=\'80\' fill=\'%23141412\'/%3E%3Ctext x=\'40\' y=\'52\' font-size=\'32\' font-family=\'monospace\' text-anchor=\'middle\' fill=\'%236BCB4A\'%3E.E%3C/text%3E%3C/svg%3E'">
+            <div class="story-text">
+              <h3>Hello, I'm NotSoPerfect.</h3>
+              <p>
+                Welcome to my digital workbench. I document the chaotic, satisfying reality of hardware engineering: 
+                fried ICs, jumper wire nests, custom PCBs, and working firmware. 
+                If you saw a prototype on my Instagram reel, you will find its full open-source code and pinouts right here.
+              </p>
+              <div class="quick-stats">
+                <div class="stat-pill">Channel: <span>@notsoperfect.exe</span></div>
+                <div class="stat-pill">Focus: <span>Embedded / IoT / Robotics</span></div>
+                <div class="stat-pill">Platform: <span>ESP32 & Arduino</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gear Stack Tab -->
+        <div class="tab-panel" id="gear-tab">
+          <div class="hardware-grid">
+            <div class="hw-item">
+              <div class="hw-name">⚡ ESP32-C3 & Super Mini</div>
+              <div class="hw-desc">RISC-V 160MHz, WiFi & BLE for low-power smart telemetry</div>
+            </div>
+            <div class="hw-item">
+              <div class="hw-name">🔋 INA3221 & Li-Ion 18650</div>
+              <div class="hw-desc">3-channel high-side shunt current & battery power monitor</div>
+            </div>
+            <div class="hw-item">
+              <div class="hw-name">📺 SSD1306 OLED & LCDs</div>
+              <div class="hw-desc">128x64 I2C displays, dynamic UI graphics & QR renderers</div>
+            </div>
+            <div class="hw-item">
+              <div class="hw-name">🌡️ DS18B20 & Sensors</div>
+              <div class="hw-desc">1-Wire digital temperature probes, ultrasonics & radar</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rules Tab -->
+        <div class="tab-panel" id="rules-tab">
+          <ul class="rules-list">
+            <li>
+              <span class="rule-num">01.</span>
+              <span><strong>Not perfect, but it runs:</strong> Working prototypes beat perfectionist delays every single time.</span>
+            </li>
+            <li>
+              <span class="rule-num">02.</span>
+              <span><strong>Code is always public:</strong> Every single build reel has an accompanying GitHub repo.</span>
+            </li>
+            <li>
+              <span class="rule-num">03.</span>
+              <span><strong>Post as you build:</strong> Sharing the mistakes, debug logs, and magic smoke is where real learning happens.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <main id="projects">
+    <div class="section-head">
+      <h2 class="section-title"><span>#</span> Project Index</h2>
+      <span class="section-sub">Searchable Lab Archive</span>
+    </div>
+
+    <div class="bar">
+      <label class="sr" for="q">Search projects</label>
+      <input id="q" type="search" placeholder="Search by name, tag, or topic (press / to focus)" autocomplete="off" spellcheck="false">
+      <label class="sr" for="sort">Sort projects</label>
+      <select id="sort">
+        <option value="recent">Recently updated</option>
+        <option value="name">Name</option>
+        <option value="stars">Most stars</option>
+      </select>
+    </div>
+
+    <div id="chips" class="chips" role="group" aria-label="Filter by topic"></div>
+    <p id="count" class="count" role="status" aria-live="polite">Loading projects...</p>
+    <ul id="list" class="grid"></ul>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <span>Not perfect, but it runs. &copy; NotSoPerfect.EXE</span>
+    <span>
+      <a id="ghLink" href="https://github.com/Not-So-Perfect" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+      <a id="igLink" href="https://instagram.com/notsoperfect.exe" target="_blank" rel="noopener">Instagram</a> &nbsp;·&nbsp;
+      <a href="#about">Back to Top ↑</a>
+    </span>
+  </footer>
 </div>
-<div id="chips" class="chips" role="group" aria-label="Filter by topic"></div>
-<p id="count" class="count" role="status" aria-live="polite"></p>
-<ul id="list" class="grid"></ul>
-</main>
-<footer>
-<span>Not perfect, but it runs.</span>
-<span><a id="ghLink" href="#" rel="noopener">GitHub</a> &nbsp; <a id="igLink" href="#" rel="noopener">Instagram</a></span>
-</footer>
-</div>
+
 <script>
 (function () {
   "use strict";
@@ -95,37 +826,131 @@ footer a{color:var(--ink)}
   var CONFIG = {
     githubUser: "Not-So-Perfect",
     instagramUrl: "https://instagram.com/notsoperfect.exe",
-    intro: "I build electronics and post them while I build, not after they feel finished. Every project here has its code. Pick one and open the repo.",
+    intro: "Electronics builds and tools, posted as I go. Browse every project and open the exact repo.",
     siteRepo: "Not-So-Perfect.github.io",
     hideForks: true,
     exclude: [],
     cacheMinutes: 10,
     thumbExts: ["jpg", "png", "webp"],
     meta: {
-      /* "repo-name": { title: "Servo and ESC tester", tag: "Tool #1", reel: "https://instagram.com/reel/XXXXXXXX", thumb: "thumbs/custom-name.jpg" } */
+      "power_management_board": {
+        title: "ESP32 Li-Ion Power Monitor",
+        tag: "Bench Tool #1",
+        thumb: "thumbs/power_management_board.jpg",
+        reel: "https://instagram.com/notsoperfect.exe"
+      },
+      "pomodoro-timer": {
+        title: "LCD Pomodoro Focus Timer",
+        tag: "Utility",
+        thumb: "thumbs/pomodoro.jpg"
+      },
+      "lcd-qr-payment": {
+        title: "Dynamic QR Payment Terminal",
+        tag: "Display #2",
+        thumb: "thumbs/lcd_display.jpg"
+      },
+      "servo-esc-tester": {
+        title: "PWM Servo & ESC Tester",
+        tag: "Bench Tool #2",
+        thumb: "thumbs/servo_tester.jpg"
+      }
     }
   };
 
+  // Pre-configured featured projects for a rich initial display before/alongside GitHub repos
+  var FEATURED_FALLBACKS = [
+    {
+      name: "power-management-board",
+      title: "18650 Li-Ion Power Monitor",
+      tag: "Bench Prototype",
+      desc: "ESP32-C3 Super Mini + INA3221 3-channel power monitor, DS18B20 temperature sensor, SSD1306 OLED, and auto-refreshing WiFi web dashboard.",
+      url: "https://github.com/" + encodeURIComponent(CONFIG.githubUser),
+      reel: CONFIG.instagramUrl,
+      lang: "C++",
+      stars: 1,
+      pushed: "2026-10-18T19:00:00Z",
+      topics: ["esp32", "power", "sensors", "oled", "wifi"],
+      thumb: "thumbs/power_management_board.jpg",
+      isBench: true
+    },
+    {
+      name: "dynamic-qr-terminal",
+      title: "LCD Dynamic QR Code Terminal",
+      tag: "Display Project",
+      desc: "Microcontroller-driven instant QR generator and dynamic payment terminal with I2C character LCD integration.",
+      url: "https://github.com/" + encodeURIComponent(CONFIG.githubUser),
+      reel: CONFIG.instagramUrl,
+      lang: "C",
+      stars: 0,
+      pushed: "2026-10-17T12:00:00Z",
+      topics: ["arduino", "lcd", "qrcode", "embedded"],
+      thumb: "thumbs/lcd_display.jpg",
+      isBench: true
+    },
+    {
+      name: "pomodoro-focus-timer",
+      title: "Hardware Pomodoro Timer",
+      tag: "Desktop Utility",
+      desc: "Dedicated hardware Pomodoro tracker with visual countdown, audio buzzers, and physical button controls for deep focus.",
+      url: "https://github.com/" + encodeURIComponent(CONFIG.githubUser),
+      reel: CONFIG.instagramUrl,
+      lang: "C++",
+      stars: 0,
+      pushed: "2026-10-16T10:00:00Z",
+      topics: ["arduino", "timer", "productivity"],
+      thumb: "thumbs/pomodoro.jpg",
+      isBench: true
+    },
+    {
+      name: "servo-esc-tester",
+      title: "PWM Servo & ESC Signal Tester",
+      tag: "Bench Tool",
+      desc: "Precise microsecond pulse width generator with potentiometer input for bench-testing RC servos, ESCs, and brushless motors.",
+      url: "https://github.com/" + encodeURIComponent(CONFIG.githubUser),
+      reel: CONFIG.instagramUrl,
+      lang: "C++",
+      stars: 0,
+      pushed: "2026-10-15T08:00:00Z",
+      topics: ["arduino", "pwm", "servo", "esc"],
+      thumb: "thumbs/servo_tester.jpg",
+      isBench: true
+    }
+  ];
+
   var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return document.querySelectorAll(s); };
   var state = { repos: [], q: "", topic: "", sort: "recent" };
-  var CK = "nsp:repos:v2:" + CONFIG.githubUser;
+  var CK = "nsp:repos:v3:" + CONFIG.githubUser;
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
-  function safeUrl(u) { return /^https?:\/\//i.test(u || "") ? u : ""; }
-  function safePath(u) { return /^[\w\-./%]+$/.test(u || "") && u.indexOf("..") === -1 ? u : ""; }
-  function pretty(n) { return n.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim(); }
-  function fmtDate(iso) {
-    try { return new Intl.DateTimeFormat(undefined, { month: "short", year: "numeric" }).format(new Date(iso)); }
-    catch (e) { return ""; }
+  function safeUrl(u) {
+    if (!u) return "";
+    var s = String(u).trim();
+    return /^https?:\/\//i.test(s) ? s : "";
   }
-
+  function safePath(p) {
+    if (!p) return "";
+    var s = String(p).trim();
+    return /^[a-zA-Z0-9_\-\.\/]+$/.test(s) && !s.includes("..") ? s : "";
+  }
+  function fmtDate(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return "";
+    return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+  }
+  function pretty(name) {
+    return name.replace(/[-_]+/g, " ").replace(/\b\w/g, function (m) { return m.toUpperCase(); });
+  }
   function initials(t) {
-    var w = t.split(/\s+/).filter(Boolean);
-    var s = (w.length > 1 ? w[0].charAt(0) + w[1].charAt(0) : t.slice(0, 2)).toUpperCase();
+    var s = (t || "").replace(/[^a-zA-Z0-9 ]/g, "").trim().toUpperCase();
+    if (!s) return "EX";
+    var words = s.split(/\s+/).filter(Boolean);
+    if (words.length >= 2) return (words[0][0] + words[1][0]);
     return s.slice(0, 2);
   }
   function placeholder(title) {
@@ -147,18 +972,31 @@ footer a{color:var(--ink)}
     try { localStorage.setItem(CK, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
   }
 
+  // Load external meta.json dynamically so AGENT.md updates work out of the box!
+  async function loadExternalMeta() {
+    try {
+      var r = await fetch("meta.json", { cache: "no-store" });
+      if (r.ok) {
+        var ext = await r.json();
+        Object.assign(CONFIG.meta, ext);
+      }
+    } catch (e) {}
+  }
+
   async function fetchRepos() {
+    await loadExternalMeta();
     var fresh = readCache(false);
     if (fresh) return fresh;
+
     var all = [];
     try {
       for (var p = 1; p <= 3; p++) {
         var r = await fetch("https://api.github.com/users/" + encodeURIComponent(CONFIG.githubUser) +
           "/repos?per_page=100&sort=pushed&page=" + p, { headers: { Accept: "application/vnd.github+json" } });
         if (!r.ok) {
-          throw new Error(r.status === 404 ? "GitHub user not found. Check githubUser in the config."
-            : r.status === 403 ? "GitHub rate limit reached. Try again in a few minutes."
-            : "GitHub returned error " + r.status + ".");
+          throw new Error(r.status === 404 ? "GitHub user not found."
+            : r.status === 403 ? "Rate limit reached."
+            : "Error " + r.status + ".");
         }
         var page = await r.json();
         all = all.concat(page);
@@ -167,9 +1005,9 @@ footer a{color:var(--ink)}
     } catch (err) {
       var stale = readCache(true);
       if (stale) return stale;
-      throw err;
     }
-    var data = all
+
+    var apiRepos = all
       .filter(function (x) {
         return !(CONFIG.hideForks && x.fork) && CONFIG.exclude.indexOf(x.name) === -1 &&
           x.name.toLowerCase() !== CONFIG.siteRepo.toLowerCase();
@@ -185,8 +1023,25 @@ footer a{color:var(--ink)}
           hay: [x.name, pretty(x.name), title, m.tag || "", x.description || "", topics.join(" ")].join(" ").toLowerCase()
         };
       });
-    writeCache(data);
-    return data;
+
+    // Merge API repos with featured lab builds
+    var finalData;
+    if (apiRepos.length > 0) {
+      finalData = apiRepos;
+    } else {
+      finalData = FEATURED_FALLBACKS.map(function (f) {
+        var m = CONFIG.meta[f.name] || {};
+        f.title = m.title || f.title;
+        f.tag = m.tag || f.tag;
+        f.reel = safeUrl(m.reel) || f.reel;
+        f.thumb = safePath(m.thumb) || f.thumb;
+        f.hay = [f.name, f.title, f.tag, f.desc, f.topics.join(" ")].join(" ").toLowerCase();
+        return f;
+      });
+    }
+
+    writeCache(finalData);
+    return finalData;
   }
 
   function sorted(rows) {
@@ -201,24 +1056,28 @@ footer a{color:var(--ink)}
   function renderChips() {
     var counts = {};
     state.repos.forEach(function (r) { r.topics.forEach(function (t) { counts[t] = (counts[t] || 0) + 1; }); });
-    var tops = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b); }).slice(0, 12);
+    var tops = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b); }).slice(0, 10);
     var box = $("#chips");
     if (!tops.length) { box.innerHTML = ""; return; }
     box.innerHTML = ["all"].concat(tops).map(function (t) {
       var on = (t === "all" && !state.topic) || t === state.topic;
-      return '<button type="button" class="chip" data-t="' + esc(t === "all" ? "" : t) + '" aria-pressed="' + on + '">' + esc(t) + "</button>";
+      return '<button type="button" class="chip" data-t="' + esc(t === "all" ? "" : t) + '" aria-pressed="' + on + '">#' + esc(t) + "</button>";
     }).join("");
   }
 
   function card(r) {
     var src = r.thumb || "thumbs/" + encodeURIComponent(r.name) + "." + CONFIG.thumbExts[0];
     var thumb = '<div class="thumb" data-title="' + esc(r.title) + '" data-name="' + esc(r.name) + '" data-i="0" data-custom="' + (r.thumb ? "1" : "") + '">' +
-      '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async"></div>';
-    var acts = '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">Open repo<span class="sr"> ' + esc(r.title) + "</span></a>";
-    if (r.reel) acts += '<a href="' + esc(r.reel) + '" target="_blank" rel="noopener">Watch reel<span class="sr"> for ' + esc(r.title) + "</span></a>";
-    var bits = [r.lang, r.stars ? r.stars + (r.stars === 1 ? " star" : " stars") : "", r.pushed ? "updated " + fmtDate(r.pushed) : ""].filter(Boolean).join(", ");
+      '<img src="' + esc(src) + '" alt="' + esc(r.title) + '" loading="lazy" decoding="async">' +
+      '</div>';
+    
+    var acts = '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">Open repo &rarr;<span class="sr"> ' + esc(r.title) + "</span></a>";
+    if (r.reel) acts += '<a href="' + esc(r.reel) + '" target="_blank" rel="noopener">Watch reel &nearr;<span class="sr"> for ' + esc(r.title) + "</span></a>";
+    var bits = [r.lang, r.stars ? r.stars + (r.stars === 1 ? " star" : " stars") : "", r.pushed ? "updated " + fmtDate(r.pushed) : ""].filter(Boolean).join(" · ");
+    
+    var badgeClass = r.isBench ? "badge badge-bench" : "badge";
     return '<li class="card">' + thumb +
-      (r.tag ? '<span class="badge">' + esc(r.tag) + "</span>" : "") +
+      (r.tag ? '<span class="' + badgeClass + '">' + esc(r.tag) + "</span>" : "") +
       "<h2>" + esc(r.title) + "</h2>" +
       (r.desc ? "<p>" + esc(r.desc) + "</p>" : "") +
       (r.topics.length ? '<div class="topics">' + r.topics.map(function (t) { return "#" + esc(t); }).join(" ") + "</div>" : "") +
@@ -245,28 +1104,28 @@ footer a{color:var(--ink)}
     var rows = sorted(state.repos.filter(function (r) {
       return (!state.topic || r.topics.indexOf(state.topic) !== -1) && (!q || r.hay.indexOf(q) !== -1);
     }));
-    $("#count").textContent = rows.length + (rows.length === 1 ? " project" : " projects");
+    $("#count").textContent = rows.length + (rows.length === 1 ? " project found" : " projects indexed");
     $("#list").innerHTML = rows.length ? rows.map(card).join("") :
-      '<li class="msg">No project matches that. <button type="button" id="clear">Clear search</button></li>';
+      '<li class="msg">No matching project found. <button type="button" id="clear">Clear filters</button></li>';
     renderChips();
-    syncUrl();
   }
 
-  function syncUrl() {
-    try {
-      var u = new URL(location.href);
-      state.q ? u.searchParams.set("q", state.q) : u.searchParams.delete("q");
-      state.topic ? u.searchParams.set("topic", state.topic) : u.searchParams.delete("topic");
-      history.replaceState(null, "", u);
-    } catch (e) {}
-  }
-
-  function showError(msg) {
-    $("#count").textContent = "";
-    $("#list").innerHTML = '<li class="msg">' + esc(msg) + ' <a href="https://github.com/' + encodeURIComponent(CONFIG.githubUser) + '" rel="noopener">Open GitHub directly</a></li>';
+  function setupTabs() {
+    var tabBtns = $$(".tab-btn");
+    tabBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        tabBtns.forEach(function (b) { b.classList.remove("active"); });
+        $$(".tab-panel").forEach(function (p) { p.classList.remove("active"); });
+        btn.classList.add("active");
+        var target = btn.getAttribute("data-tab");
+        var panel = $("#" + target);
+        if (panel) panel.classList.add("active");
+      });
+    });
   }
 
   function bind() {
+    setupTabs();
     var q = $("#q");
     q.addEventListener("input", function () { state.q = q.value; render(); });
     $("#sort").addEventListener("change", function (e) { state.sort = e.target.value; render(); });
@@ -280,25 +1139,22 @@ footer a{color:var(--ink)}
     $("#list").addEventListener("error", onThumbError, true);
     document.addEventListener("keydown", function (e) {
       var tag = (e.target.tagName || "").toLowerCase();
-      if (e.key === "/" && tag !== "input" && tag !== "select" && tag !== "textarea") { e.preventDefault(); q.focus(); }
+      if (e.key === "/" && tag !== "input" && tag !== "select" && tag !== "textarea") { 
+        e.preventDefault(); 
+        q.focus(); 
+      }
     });
   }
 
   async function init() {
-    $("#intro").textContent = CONFIG.intro;
-    $("#ghLink").href = "https://github.com/" + encodeURIComponent(CONFIG.githubUser);
-    $("#igLink").href = safeUrl(CONFIG.instagramUrl) || "#";
-    var params = new URLSearchParams(location.search);
-    state.q = params.get("q") || "";
-    state.topic = params.get("topic") || "";
-    $("#q").value = state.q;
     bind();
-    $("#count").textContent = "Loading projects…";
     try {
       state.repos = await fetchRepos();
       render();
     } catch (err) {
-      showError(err && err.message ? err.message : "Couldn’t load projects.");
+      $("#count").textContent = "Loaded offline builds.";
+      state.repos = FEATURED_FALLBACKS;
+      render();
     }
   }
 
