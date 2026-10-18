@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<!-- FILE: index.html | VERSION: 3.0 | Link-in-Bio Welcome & Project Hub for NotSoPerfect.EXE -->
+<!-- FILE: index.html | VERSION: 3.1 | Clean Link-in-Bio for NotSoPerfect.EXE -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NotSoPerfect.EXE | Link in Bio & Electronics Projects</title>
-<meta name="description" content="Electronics builds, microcontrollers, embedded code, and tools posted as I go. Pick any project to view its code and reel.">
+<meta name="description" content="Electronics builds, microcontrollers, embedded code, and tools posted as I go.">
 <meta name="theme-color" content="#0A0A0A">
 <meta property="og:title" content="NotSoPerfect.EXE | Link in Bio">
-<meta property="og:description" content="Electronics builds, microcontrollers, embedded code, and tools.">
+<meta property="og:description" content="Raw electronics builds, microcontrollers, and embedded tools.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0A0A'/%3E%3Ctext x='50' y='70' font-size='60' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%236BCB4A'%3E.E%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  padding: max(20px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(36px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
 }
 
 /* Subtle background grid & glow */
@@ -56,7 +56,7 @@ body::before {
   position: fixed;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(107, 203, 74, 0.12) 0%, transparent 70%),
+    radial-gradient(circle at 50% 0%, rgba(107, 203, 74, 0.1) 0%, transparent 70%),
     linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 100% 100%, 32px 32px, 32px 32px;
@@ -65,7 +65,7 @@ body::before {
 }
 
 .wrap {
-  max-width: 680px; /* Streamlined for phone and desktop link-in-bio */
+  max-width: 640px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -77,7 +77,7 @@ a { color: inherit; text-decoration: none; }
 /* Bio Header Card */
 .bio-header {
   text-align: center;
-  padding: 24px 16px 20px;
+  padding: 20px 12px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,7 +87,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   width: 96px;
   height: 96px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 .avatar-img {
   width: 96px;
@@ -128,40 +128,57 @@ a { color: inherit; text-decoration: none; }
   50% { transform: scale(0.7); opacity: 0.4; }
 }
 
+/* Brand Title */
 .brand-title {
   margin: 0;
-  font: 400 clamp(38px, 9vw, 56px)/0.95 var(--marker);
+  font: 400 clamp(36px, 8.5vw, 54px)/1.05 var(--marker);
   letter-spacing: 0.02em;
   color: var(--ink);
   transform: rotate(-1deg);
+  display: inline-block;
+  padding-bottom: 6px;
 }
 .brand-title span { color: var(--ink); }
-.brand-title b { color: var(--g); font-weight: normal; border-bottom: 3px solid var(--g); }
+.brand-title b {
+  color: var(--g);
+  font-weight: normal;
+  border-bottom: 3px solid var(--g);
+  display: inline-block;
+}
 
+/* Clear separation for Instagram handle pill */
+.handle-wrapper {
+  margin-top: 18px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: center;
+}
 .handle-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--g);
   background: var(--g-dim);
-  border: 1px solid rgba(107, 203, 74, 0.3);
-  padding: 4px 14px;
-  border-radius: 20px;
-  margin-top: 10px;
+  border: 1.5px solid rgba(107, 203, 74, 0.4);
+  padding: 7px 18px;
+  border-radius: 30px;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 .handle-pill:hover {
-  background: rgba(107, 203, 74, 0.2);
+  background: rgba(107, 203, 74, 0.22);
   border-color: var(--g);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--g-glow);
 }
 
 .bio-desc {
-  margin: 16px 0 20px;
-  font-size: 16px;
-  line-height: 1.55;
+  margin: 10px 0 24px;
+  font-size: 15.5px;
+  line-height: 1.6;
   color: var(--ink-dim);
   max-width: 48ch;
 }
@@ -169,11 +186,11 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink);
 }
 
-/* Quick Action Buttons (Instagram, GitHub, Lab) */
+/* Quick Action Buttons */
 .action-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
   max-width: 440px;
   margin-bottom: 24px;
@@ -213,15 +230,15 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 0 20px var(--g-glow);
 }
 
-/* Mini Nav / Jump Anchors */
+/* Divider */
 .divider {
   width: 100%;
   height: 1px;
   background: linear-gradient(to right, transparent, var(--line), transparent);
-  margin: 8px 0 24px;
+  margin: 8px 0 28px;
 }
 
-/* Search & Filter Header */
+/* Projects Section */
 .section-nav {
   display: flex;
   align-items: center;
@@ -335,8 +352,6 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 12px var(--g-glow);
 }
-
-/* Washi tape visual detail */
 .project-card::before {
   content: "";
   position: absolute;
@@ -352,7 +367,6 @@ a { color: inherit; text-decoration: none; }
   z-index: 2;
 }
 
-/* Card layout */
 .card-thumb-wrap {
   position: relative;
   width: 100%;
@@ -468,24 +482,46 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 0 12px var(--g-glow);
 }
 
-.empty-state {
-  text-align: center;
-  padding: 40px 20px;
-  background: var(--surface);
+/* Clean Empty State when no projects are published yet */
+.empty-box {
   border: 1.5px dashed var(--line);
   border-radius: 14px;
-  color: var(--mute);
+  padding: 40px 24px;
+  text-align: center;
+  background: rgba(20, 20, 18, 0.4);
 }
-.empty-state button {
-  background: none;
-  border: none;
+.empty-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  display: block;
+}
+.empty-title {
+  margin: 0 0 8px;
+  font-family: var(--marker);
+  font-size: 20px;
+  color: var(--ink);
+}
+.empty-text {
+  margin: 0 auto 18px;
+  color: var(--mute);
+  font-size: 14px;
+  max-width: 42ch;
+  line-height: 1.5;
+}
+.empty-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
   color: var(--g);
-  text-decoration: underline;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 600;
-  margin-top: 8px;
-  display: inline-block;
+  border-bottom: 2px solid var(--g);
+  padding-bottom: 2px;
+}
+.empty-link:hover {
+  color: #fff;
+  border-color: #fff;
 }
 
 /* Footer */
@@ -507,7 +543,7 @@ footer a:hover { color: var(--g); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
 @media (max-width: 480px) {
-  .brand-title { font-size: 40px; }
+  .brand-title { font-size: 38px; }
   .action-grid { grid-template-columns: 1fr; }
   .act-btn.featured { grid-column: span 1; }
   .card-buttons { flex-direction: column; }
@@ -531,20 +567,22 @@ footer a:hover { color: var(--g); }
       <span>NotSo</span><b>Perfect</b>.EXE
     </h1>
 
-    <a href="https://instagram.com/notsoperfect.exe" target="_blank" rel="noopener" class="handle-pill">
-      <span>📸 @notsoperfect.exe</span>
-    </a>
+    <div class="handle-wrapper">
+      <a href="https://instagram.com/notsoperfect.exe" target="_blank" rel="noopener" class="handle-pill">
+        <span>📸 @notsoperfect.exe</span>
+      </a>
+    </div>
 
     <p class="bio-desc">
       Raw electronics builds, microcontrollers & hardware tools. 
       <strong>I post prototypes while I build</strong>, not after they feel finished. 
-      Every build below includes its exact GitHub code, wiring, and Instagram reel.
+      Every build includes its exact GitHub code, wiring, and Instagram reel.
     </p>
 
-    <!-- Instant Bio Action Buttons -->
+    <!-- Quick Action Buttons -->
     <div class="action-grid">
       <a href="#projects" class="act-btn featured">
-        <span>⚡ Browse All Projects & Code ↓</span>
+        <span>⚡ Explore Projects & Code ↓</span>
       </a>
       <a href="https://instagram.com/notsoperfect.exe" target="_blank" rel="noopener" class="act-btn">
         <span>📺 Instagram Reels</span>
@@ -561,14 +599,14 @@ footer a:hover { color: var(--g); }
   <main id="projects">
     <div class="section-nav">
       <h2 class="section-heading"><span>#</span> Project Index</h2>
-      <span id="count" class="project-count" role="status" aria-live="polite">Loading...</span>
+      <span id="count" class="project-count" role="status" aria-live="polite"></span>
     </div>
 
     <!-- Search Input -->
     <div class="search-box">
       <span class="search-icon">🔍</span>
       <label for="q" class="sr">Search projects</label>
-      <input id="q" type="search" class="search-input" placeholder="Search by name, sensor, chip, or topic..." autocomplete="off" spellcheck="false">
+      <input id="q" type="search" class="search-input" placeholder="Search projects by name, chip, or sensor..." autocomplete="off" spellcheck="false">
     </div>
 
     <!-- Filter Chips -->
@@ -599,92 +637,14 @@ footer a:hover { color: var(--g); }
     siteRepo: "Not-So-Perfect.github.io",
     hideForks: true,
     exclude: [],
-    cacheMinutes: 10,
+    cacheMinutes: 5,
     thumbExts: ["jpg", "png", "webp"],
-    meta: {
-      "power_management_board": {
-        title: "ESP32 Li-Ion Power Monitor",
-        tag: "Tool #1",
-        thumb: "thumbs/power_management_board.jpg",
-        reel: "https://instagram.com/notsoperfect.exe"
-      },
-      "pomodoro-timer": {
-        title: "LCD Pomodoro Focus Timer",
-        tag: "Utility",
-        thumb: "thumbs/pomodoro.jpg"
-      },
-      "lcd-qr-payment": {
-        title: "Dynamic QR Payment Terminal",
-        tag: "Display #2",
-        thumb: "thumbs/lcd_display.jpg"
-      },
-      "servo-esc-tester": {
-        title: "PWM Servo & ESC Tester",
-        tag: "Tool #2",
-        thumb: "thumbs/servo_tester.jpg"
-      }
-    }
+    meta: {}
   };
-
-  // Featured bench projects so the link-in-bio is instantly rich & interactive
-  var FEATURED_FALLBACKS = [
-    {
-      name: "power_management_board",
-      title: "18650 Li-Ion Power Monitor",
-      tag: "Tool #1",
-      desc: "ESP32-C3 Super Mini + INA3221 3-channel power monitor, DS18B20 temperature sensor, SSD1306 OLED, and auto-refreshing WiFi web dashboard.",
-      url: "https://github.com/" + encodeURIComponent(CONFIG.githubUser),
-      reel: CONFIG.instagramUrl,
-      lang: "C++",
-      stars: 1,
-      pushed: "2026-10-18T19:00:00Z",
-      topics: ["esp32", "power", "sensors", "oled", "wifi"],
-      thumb: "thumbs/power_management_board.jpg"
-    },
-    {
-      name: "lcd_display",
-      title: "Dynamic QR Payment Terminal",
-      tag: "Display #2",
-      desc: "Microcontroller-driven instant QR generator and dynamic payment terminal with I2C character LCD integration.",
-      url: "https://github.com/" + encodeURIComponent(CONFIG.githubUser),
-      reel: CONFIG.instagramUrl,
-      lang: "C",
-      stars: 0,
-      pushed: "2026-10-17T12:00:00Z",
-      topics: ["arduino", "lcd", "qrcode"],
-      thumb: "thumbs/lcd_display.jpg"
-    },
-    {
-      name: "pomodoro",
-      title: "Hardware Pomodoro Timer",
-      tag: "Utility",
-      desc: "Dedicated hardware Pomodoro tracker with visual countdown, audio buzzers, and physical button controls for deep focus.",
-      url: "https://github.com/" + encodeURIComponent(CONFIG.githubUser),
-      reel: CONFIG.instagramUrl,
-      lang: "C++",
-      stars: 0,
-      pushed: "2026-10-16T10:00:00Z",
-      topics: ["arduino", "timer", "productivity"],
-      thumb: "thumbs/pomodoro.jpg"
-    },
-    {
-      name: "servo_tester",
-      title: "Servo & ESC Signal Tester",
-      tag: "Tool #2",
-      desc: "Precise microsecond pulse width generator with potentiometer input for bench-testing RC servos, ESCs, and brushless motors.",
-      url: "https://github.com/" + encodeURIComponent(CONFIG.githubUser),
-      reel: CONFIG.instagramUrl,
-      lang: "C++",
-      stars: 0,
-      pushed: "2026-10-15T08:00:00Z",
-      topics: ["arduino", "pwm", "servo", "esc"],
-      thumb: "thumbs/servo_tester.jpg"
-    }
-  ];
 
   var $ = function (s) { return document.querySelector(s); };
   var state = { repos: [], q: "", topic: "" };
-  var CK = "nsp:bio:v1:" + CONFIG.githubUser;
+  var CK = "nsp:bio:v4:" + CONFIG.githubUser;
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -785,23 +745,8 @@ footer a:hover { color: var(--g); }
         };
       });
 
-    var finalData;
-    if (apiRepos.length > 0) {
-      finalData = apiRepos;
-    } else {
-      finalData = FEATURED_FALLBACKS.map(function (f) {
-        var m = CONFIG.meta[f.name] || {};
-        f.title = m.title || f.title;
-        f.tag = m.tag || f.tag;
-        f.reel = safeUrl(m.reel) || f.reel;
-        f.thumb = safePath(m.thumb) || f.thumb;
-        f.hay = [f.name, f.title, f.tag, f.desc, f.topics.join(" ")].join(" ").toLowerCase();
-        return f;
-      });
-    }
-
-    writeCache(finalData);
-    return finalData;
+    writeCache(apiRepos);
+    return apiRepos;
   }
 
   function renderChips() {
@@ -822,7 +767,7 @@ footer a:hover { color: var(--g); }
       '<img src="' + esc(src) + '" alt="' + esc(r.title) + '" loading="lazy" decoding="async">' +
       '</div>';
 
-    var acts = '<a href="' + esc(r.url) + '" target="_blank" rel="noopener" class="card-btn card-btn-code">💻 Get Code & Wiring &rarr;</a>';
+    var acts = '<a href="' + esc(r.url) + '" target="_blank" rel="noopener" class="card-btn card-btn-code">💻 View Code &amp; Wiring &rarr;</a>';
     if (r.reel) {
       acts += '<a href="' + esc(r.reel) + '" target="_blank" rel="noopener" class="card-btn card-btn-reel">🎬 Watch Reel &nearr;</a>';
     }
@@ -861,9 +806,25 @@ footer a:hover { color: var(--g); }
     var rows = state.repos.filter(function (r) {
       return (!state.topic || r.topics.indexOf(state.topic) !== -1) && (!q || r.hay.indexOf(q) !== -1);
     });
+
+    if (state.repos.length === 0) {
+      $("#count").textContent = "";
+      $("#list").innerHTML = '<li class="empty-box">' +
+        '<span class="empty-icon">⚡</span>' +
+        '<h3 class="empty-title">Lab Bench Is Warming Up</h3>' +
+        '<p class="empty-text">No public project repos published yet. The first build and code release will drop soon right here!</p>' +
+        '<a href="https://instagram.com/notsoperfect.exe" target="_blank" rel="noopener" class="empty-link">Watch live builds on Instagram &rarr;</a>' +
+        '</li>';
+      $("#chips").innerHTML = "";
+      return;
+    }
+
     $("#count").textContent = rows.length + (rows.length === 1 ? " project" : " projects");
     $("#list").innerHTML = rows.length ? rows.map(card).join("") :
-      '<li class="empty-state">No matching projects found.<br><button type="button" id="clear">Reset Search</button></li>';
+      '<li class="empty-box">' +
+      '<p class="empty-text">No project matches "' + esc(state.q) + '".</p>' +
+      '<button type="button" id="clear" class="empty-link">Reset Search</button>' +
+      '</li>';
     renderChips();
   }
 
@@ -886,7 +847,7 @@ footer a:hover { color: var(--g); }
       state.repos = await fetchRepos();
       render();
     } catch (err) {
-      state.repos = FEATURED_FALLBACKS;
+      state.repos = [];
       render();
     }
   }
